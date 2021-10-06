@@ -1,0 +1,506 @@
+webpackHotUpdate("main",{
+
+/***/ "./src/Components/ProjectDocs/index.js":
+/*!*********************************************!*\
+  !*** ./src/Components/ProjectDocs/index.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _TopInsideBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../TopInsideBar */ "./src/Components/TopInsideBar/index.js");
+/* harmony import */ var _style_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.js */ "./src/Components/ProjectDocs/style.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _contextApi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../contextApi */ "./src/contextApi.js");
+/* harmony import */ var _Services_projectApi__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Services/projectApi */ "./src/Services/projectApi.js");
+/* harmony import */ var _Dropzone__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Dropzone */ "./src/Components/Dropzone/index.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+var _jsxFileName = "E:\\Desenvolvimento\\Est\xE1gio\\ludus\\src\\Components\\ProjectDocs\\index.js";
+
+
+
+
+
+
+
+
+const data = Object(_Services_projectApi__WEBPACK_IMPORTED_MODULE_5__["default"])();
+
+const ProjectDocs = props => {
+  let Anchors = [];
+  let [activeInput, setActiveInput] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  let [newLink, setNewLink] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
+  let [images, setImages] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  let [pdfs, setPdfs] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  let [links, setLinks] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(["http://localhost:3000/documentos"]);
+  const {
+    projectID
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_contextApi__WEBPACK_IMPORTED_MODULE_4__["default"]);
+  const projectData = data.filter(item => {
+    return item._id === projectID;
+  });
+  const project = projectData[0];
+
+  const HandleUpdate = () => {};
+
+  const HandleCreate = () => {};
+
+  const HandleDelete = async index => {
+    const newLinks = links;
+    newLinks.splice(index, 1);
+    setLinks([...newLinks]);
+  };
+
+  const HandleChange = e => {
+    setNewLink(e.target.value);
+  };
+
+  const HandleSubmit = e => {
+    e.preventDefault();
+    setLinks([...links, newLink]);
+    setActiveInput(false);
+  };
+
+  const onDrop = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(acceptedfiles => {
+    console.log(acceptedfiles);
+
+    if (acceptedfiles.length === 0) {
+      return null;
+    }
+
+    if (acceptedfiles[0].type === "application/pdf") {
+      setPdfs([acceptedfiles.map(file => file), ...pdfs]);
+      return null;
+    }
+
+    setImages([...images, acceptedfiles.map(file => Object.assign(file, {
+      preview: URL.createObjectURL(file)
+    }))]);
+  }, [setImages, images, setPdfs, pdfs]);
+  const thumbs = images.map(file => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Image"], {
+      alt: "teste",
+      key: file[0].name,
+      src: file[0].preview,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 91,
+        columnNumber: 9
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      style: {
+        margin: "5px 0px 10px"
+      },
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 92,
+        columnNumber: 9
+      }
+    }, file[0].name));
+  });
+  const pdfsFiles = pdfs.map(file => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        margin: "10px",
+        textAlign: "center"
+      },
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 99,
+        columnNumber: 7
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faFilePdf"],
+      style: {
+        color: "#e83f3f",
+        marginRight: "5px",
+        fontSize: "1.25em"
+      },
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 105,
+        columnNumber: 9
+      }
+    }), file[0].name);
+  });
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {}, [images]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      width: "100%",
+      minHeight: "100vh",
+      height: "100%",
+      background: "#f8f9fe"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 121,
+      columnNumber: 5
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TopInsideBar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    Anchors: Anchors,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 131,
+      columnNumber: 7
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Wrapper"], {
+    className: "Wrapper",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 132,
+      columnNumber: 7
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["ProjectHeader"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 133,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 134,
+      columnNumber: 11
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["WrapCard"], {
+    className: "WrapInfo",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 136,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Header"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 137,
+      columnNumber: 11
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Title"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 138,
+      columnNumber: 13
+    }
+  }, "Descri\xE7\xE3o")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Info"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 140,
+      columnNumber: 11
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 141,
+      columnNumber: 13
+    }
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["WrapCard"], {
+    className: "WrapInfo",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 144,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Header"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 145,
+      columnNumber: 11
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Title"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 146,
+      columnNumber: 13
+    }
+  }, "Links")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Info"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 148,
+      columnNumber: 11
+    }
+  }, links.length !== 0 ? links.map((item, index) => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: index,
+      style: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        margin: "10px 0px"
+      },
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 152,
+        columnNumber: 19
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: `//${item}`,
+      rel: "noopener noreferrer",
+      target: "_blank",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 161,
+        columnNumber: 21
+      }
+    }, item), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 168,
+        columnNumber: 21
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      index: index,
+      color: "#5e72e4",
+      onClick: () => HandleDelete(index),
+      style: {
+        marginLeft: "15px"
+      },
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 169,
+        columnNumber: 23
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faTrash"],
+      style: {
+        marginRight: "15px",
+        fontSize: "1.0em"
+      },
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 175,
+        columnNumber: 25
+      }
+    }), "Deletar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      color: "#5e72e4",
+      style: {
+        margin: "0px 10px"
+      },
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 181,
+        columnNumber: 23
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faEdit"],
+      style: {
+        marginRight: "15px",
+        fontSize: "1.0em"
+      },
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 182,
+        columnNumber: 25
+      }
+    }), "Editar")));
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 193,
+      columnNumber: 15
+    }
+  }, "Nenhum Link foi encontrado"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Form"], {
+    onSubmit: HandleSubmit,
+    active: activeInput,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 195,
+      columnNumber: 13
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+    onChange: HandleChange,
+    placeholder: "coloque aqui o seu link",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 196,
+      columnNumber: 15
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    style: {
+      marginLeft: "10px"
+    },
+    type: "submit",
+    color: "#5e72e4",
+    side: true,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 200,
+      columnNumber: 15
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faArrowRight"],
+    style: {
+      marginLeft: "5px",
+      fontSize: "1.0em"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 206,
+      columnNumber: 17
+    }
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 212,
+      columnNumber: 13
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    style: {
+      borderRadius: "50em",
+      padding: "15px 18px",
+      marginTop: "30px"
+    },
+    color: "#2dce89",
+    onClick: () => setActiveInput(true),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 213,
+      columnNumber: 15
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faPlus"],
+    style: {
+      fontSize: "1.25em"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 222,
+      columnNumber: 17
+    }
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["WrapCard"], {
+    className: "WrapInfo",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 227,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Header"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 228,
+      columnNumber: 11
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Title"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 229,
+      columnNumber: 13
+    }
+  }, "Imagens")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Info"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 231,
+      columnNumber: 11
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 232,
+      columnNumber: 13
+    }
+  }, thumbs), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dropzone__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    onDrop: onDrop,
+    accept: "image/*",
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faFileImage"],
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 242,
+      columnNumber: 13
+    }
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["WrapCard"], {
+    className: "WrapInfo",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 245,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Header"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 246,
+      columnNumber: 11
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Title"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 247,
+      columnNumber: 13
+    }
+  }, "PDF")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style_js__WEBPACK_IMPORTED_MODULE_2__["Info"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 249,
+      columnNumber: 11
+    }
+  }, pdfsFiles, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dropzone__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    onDrop: onDrop,
+    accept: [".pdf", ".docx"],
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faFilePdf"],
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 251,
+      columnNumber: 13
+    }
+  })))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ProjectDocs);
+
+/***/ })
+
+})
+//# sourceMappingURL=main.cdea6a1f59ad1b566579.hot-update.js.map
