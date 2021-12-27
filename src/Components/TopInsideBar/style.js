@@ -9,6 +9,8 @@ export const Container = styled.div`
   place-items: center;
   justify-content: space-between;
   box-shadow: 0px 0px 2px #3C2A57;
+  position: initial;
+  margin-bottom: 10px;
 `;
 
 export const WrapLinks = styled.div`
@@ -30,19 +32,9 @@ export const Button = styled.div`
   cursor: pointer;
 `;
 
-export const NameProject = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  align-content: center;
-  margin-left: 5.5%;
-  font-size: 23px;
-  font-weight: 700;
-  color: var(--white);
-`;
 
 export const Config = styled.a`
-  background: #282828;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #7F64AA;
   display: inline-flex;
   height: 40px;
   justify-content: center;
@@ -51,7 +43,6 @@ export const Config = styled.a`
   margin-right: 2vw;
   padding: 2px 20px 2px 0px;
   text-decoration: none;
-  cursor: pointer;
 
   img {
     margin-right: 5px;
@@ -90,4 +81,33 @@ export const Config = styled.a`
       margin-right: 0;
     }
   }
+`;
+
+export const Image = styled.div`
+      margin-left: 5px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12)), #7F64AA;
+      :hover {
+          cursor: pointer;
+          }
+`;
+
+export const InitialName = styled.text`
+    font-size: 20px;
+
+    font-weight: bold;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff; 
+    
 `;

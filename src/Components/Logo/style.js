@@ -8,9 +8,10 @@ export const Button = styled.div`
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 55px;
-  height: 55px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12)), #7F64AA;
   :hover {
       border-radius: 35%;
       background-color: white;
@@ -21,8 +22,8 @@ export const Button = styled.div`
 
 
 export const Logo = styled.div`
-    font-size: 25px;
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;

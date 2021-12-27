@@ -1,110 +1,94 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import UserContext, { Context } from "../../Context/contextApi";
+import { Context } from "../../Context/contextApi";
 
 import { useHistory } from "react-router-dom";
-import { Container, Config, WrapLinks, Button, NameProject } from "./style.js";
+import { Container, Config, WrapLinks, InitialName, Image } from "./style.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-import { getId, getToken, idUser, isAuthenticated, logout } from "../../Services/auth";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { getId } from "../../Services/auth";
 import http from "../../Services/httpRequest";
 
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+
+
+
 const TopInsideBar = (props) => {
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   let history = useHistory();
 
-  const { login, id, desloga} = useContext(Context);
+  const { desloga } = useContext(Context);
 
   const [users, setUsers] = useState([]);
 
   
+  
+
+    function linkHistory(){
+        history.push(`/profile`)
+    }
 
   useEffect(() => {
     (async () => {
       const response = await http.get(`/user/${getId()}`);
-      setUsers(response.data.result);
+      console.log(response.data)
+      setUsers(response.data);
     })();
   }, []);
 
-  
- // const user = users.filter((user) => user.email === login.email);
-  //const permission = users[0].permission;
+  var name = `${users.name}`;
+  var initialName = name.substring(0,2);
+  console.log(initialName)
 
- 
   return (
     <Container>
-      
       <WrapLinks>
-        
-        {/* <Button onClick={() => history.goBack()}>
-          <FontAwesomeIcon
-            icon={faArrowLeft}
-            style={{
-              color: "white",
-              marginRight: "10px",
-              fontSize: "1.25em",
-            }}
-          />
-          <p>Go Back</p>
-        </Button> */}
-        {/* {props.Anchors.map((item, index) =>
-          item.permissions ? (
-            permission.some((userPermission) => {
-              return item.permissions.some((itemPermission) => {
-                return userPermission === itemPermission;
-              });
-            }) ? (
-              <Link
-                style={{ textDecoration: "none" }}
-                key={index}
-                to={item.link}
-              >
-                <Button>
-                  <FontAwesomeIcon
-                    icon={item.icon}
-                    style={{
-                      color: `${item.color}`,
-                      marginRight: "10px",
-                      fontSize: "1.25em",
-                    }}
-                  />
-                  <p>{item.text}</p>
-                </Button>
-              </Link>
-            ) : null
-          ) : (
-            <Link style={{ textDecoration: "none" }} key={index} to={item.link}>
-              <Button>
-                <FontAwesomeIcon
-                  icon={item.icon}
-                  style={{
-                    color: `${item.color}`,
-                    marginRight: "10px",
-                    fontSize: "1.25em",
-                  }}
-                />
-                <p>{item.text}</p>
-              </Button>
-            </Link>
-          )
-        )}
-        {props.Component ? props.Component : null} */}
       </WrapLinks>
-      
-      <Config onClick={desloga}>
+      <Config>
+        <Image  
+        aria-expanded={open ? 'true' : undefined}
+         disableElevation
+         onClick={handleClick}
+         style={{cursor: "pointer"}}>
+          {users.avatar_url ?  <img
         
-        <img
           alt={users.name}
           // title={login.name}
-          src={
-            users.picture
-              ? users.picture
-              : null // : "https://devshift.biz/wp-content/uploads/2017/04/profile-icon-png-898.png"
-          }
-        />
+          src={users.avatar_url}
+        /> : <InitialName>
+        {initialName}
+        </InitialName>} 
+        </Image>
+        
         <p>{users.name}</p>
-        <FontAwesomeIcon icon={faCaretDown} />
+        <FontAwesomeIcon icon={faCaretDown}  
+          aria-expanded={open ? 'true' : undefined}
+          disableElevation
+          onClick={handleClick}
+          style={{cursor: "pointer"}}
+      />
       </Config>
+      <Menu 
+        id="demo-customized-menu"
+        MenuListProps={{
+          'aria-labelledby': 'demo-customized-button',
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}>
+          <MenuItem onClick={linkHistory}>Perfil</MenuItem>
+          <MenuItem onClick={desloga}>Sair</MenuItem>
+          </Menu>
     </Container>
   );
 };

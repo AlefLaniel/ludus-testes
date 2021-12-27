@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         outline: 0;
         box-sizing: border-box;
-        font-family: 'Nunito', sans-serif;
+        font-family: 'Quicksand', 'Poppins',sans-serif;
     }
     html, body, #root, .App {
         height: 100%;
@@ -26,10 +26,10 @@ const GlobalStyle = createGlobalStyle`
         --secondary: #006A58;
         --tertiary: #33B270;
         --quaternary:#201630;
-
         --white: #fff;
         --gray: #8a8c8a;
-        
+        --font-familyP: 'Renogare', 'Roboto',sans-serif;
+        --font-familyS: 'Quicksand', 'Poppins'sans-serif;
     }
 `;
 

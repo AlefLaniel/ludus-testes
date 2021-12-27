@@ -1,145 +1,123 @@
 import React, { useCallback, useState, useEffect } from "react";
-
-import TopInsideBar from "../TopInsideBar";
+import { getToken, getIdProject } from "../../Services/auth";
+import http from "../../Services/httpRequest";
 
 import {
+  Container,
   Title,
   Wrapper,
   WrapCard,
   Header,
   Info,
-  ProjectHeader,
-  Image,
   Button,
   Input,
   Form,
+  ButtonLinks
 } from "./style.js";
 import {
-  faFilePdf,
-  faFileImage,
   faTrash,
-  faEdit,
   faPlus,
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 // import contextApi from "../../contextApi";
 // import loadProjects from "../../Services/projectApi";
-import Dropzone from "../Dropzone";
+import SendImageProject from "../SendImageProject";
+import SendPdfProject from "../SendPdfProject";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-//const data = loadProjects();
-
 const ProjectDocs = (props) => {
-  let Anchors = [];
-  let [activeInput, setActiveInput] = useState(false);
-  let [newLink, setNewLink] = useState("");
-  let [images, setImages] = useState([]);
-  let [pdfs, setPdfs] = useState([]);
-  let [links, setLinks] = useState(["http://localhost:3000/documentos"]);
+  const idproject = getIdProject();
+    let [activeInput, setActiveInput] = useState(false);
+    let [newLink, setNewLink] = useState("");
+    let [images, setImages] = useState([]);
+    let [pdfs, setPdfs] = useState([]);
+    let [links, setLinks] = useState([]);
 
-  // const { projectID } = useContext(contextApi);
+    const config = {
+      headers: { Authorization: `Bearer ${getToken()}` }
+    };
 
-  // const projectData = data.filter((item) => {
-  //   return item._id === projectID;
-  // });
+    function refreshPage(){ 
+      window.location.reload(); 
+    }
 
-  // const project = projectData[0];
-
-  //const HandleUpdate = () => {};
-
-  //const HandleCreate = () => {};
-
-  const HandleDelete = async (index) => {
-    const newLinks = links;
-    newLinks.splice(index, 1);
-    setLinks([...newLinks]);
-  };
-
-  const HandleChange = (e) => {
-    setNewLink(e.target.value);
-  };
-
-  const HandleSubmit = (e) => {
-    e.preventDefault();
-    setLinks([...links, newLink]);
-    setActiveInput(false);
-    setNewLink("");
-  };
-
-  const onDrop = useCallback(
-    (acceptedfiles) => {
-      if (acceptedfiles.length === 0) {
-        return null;
+    useEffect(() => {
+      (async () => {
+        const response = await http.get(`/project/${getIdProject()}`);
+        setLinks(response.data.project.links)
       }
-      if (acceptedfiles[0].type === "application/pdf") {
-        setPdfs([acceptedfiles.map((file) => file), ...pdfs]);
-        return null;
+      )();
+    }, []);
+
+
+    /* Funções de Integração de Links com o back */  
+    const HandleDelete = async (item, index) => {
+      const newLinks = links;
+      newLinks.splice(index, 1);
+      setLinks([...newLinks]);
+
+      if (item !== '' ) {
+        const body = {
+          link: item
+        }
+
+        http
+        .put(`/project/removelink/${idproject}`, body, config)
+        .then((res) => {
+          console.log(res);
+          console.log('go');
+        })
+        .catch((err) =>{
+          console.log("Ocorreu algum erro")
+          console.log(err.response);
+        });
+        
       }
-      setImages([
-        ...images,
-        acceptedfiles.map((file) =>
-          Object.assign(file, { preview: URL.createObjectURL(file) })
-        ),
-      ]);
-    },
-    [setImages, images, setPdfs, pdfs]
-  );
+    };
+    
+      const HandleChange = (e) => {
+        setNewLink(e.target.value);
+      };
 
-  const thumbs = images.map((file) => {
-    return (
-      <>
-        <Image alt="teste" key={file[0].name} src={file[0].preview} />
-        <p style={{ margin: "5px 0px 10px" }}>{file[0].name}</p>
-      </>
-    );
-  });
+      console.log(images);
+    
+      const HandleSubmit = (e) => {
+        e.preventDefault();
+        setLinks([...links, newLink]);
+        setActiveInput(false);
+        setNewLink("");
 
-  const pdfsFiles = pdfs.map((file) => {
-    return (
-      <div
-        style={{
-          margin: "10px",
-          textAlign: "center",
-        }}
-      >
-        <FontAwesomeIcon
-          icon={faFilePdf}
-          style={{
-            color: "#e83f3f",
-            marginRight: "5px",
-            fontSize: "1.25em",
-          }}
-        />
-        {file[0].name}
-      </div>
-    );
-  });
+        console.log(newLink)
+  
 
-  useEffect(() => {}, [images]);
+        if (newLink !== '' ) {
+          const body = {
+            link: newLink
+          }
 
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        minHeight: "100vh",
-        height: "100%",
-        background: "#f8f9fe",
-      }}
-    >
-      <TopInsideBar Anchors={Anchors} />
-      <Wrapper className="Wrapper">
-        <ProjectHeader>
-          <h1>{/*project.projectName*/}</h1>
-        </ProjectHeader>
-        <WrapCard className="WrapInfo">
-          <Header>
-            <Title>Descrição</Title>
-          </Header>
-          <Info>{/* <p>{project.projectDescription}</p> */}</Info>
-        </WrapCard>
+          http
+          .put(`/project/sendlink/${idproject}`, body, config)
+          .then((res) => {
+            console.log(res);
+            console.log('go');
+            refreshPage();
+          })
+          .catch((err) =>{
+            console.log("Ocorreu algum erro")
+            console.log(err.response);
+          });
+          
+        }
+
+      };
+    
+   /* Fim das Funções */
+    
+     
+ return (
+    <Container>
+      <Wrapper className="Wrapper"> 
         <WrapCard className="WrapInfo">
           <Header>
             <Title>Links</Title>
@@ -158,33 +136,27 @@ const ProjectDocs = (props) => {
                     }}
                   >
                     <a
-                      href={`//${item}`}
+                      id="link"
+                      href={`${item}`}
                       rel="noopener noreferrer"
                       target="_blank"
                     >
                       {item}
                     </a>
-                    <div>
+                    <ButtonLinks>
                       <Button
                         index={index}
-                        color={"#5e72e4"}
-                        onClick={() => HandleDelete(index)}
+                        color={"linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #7F64AA"}
+                        onClick={() => HandleDelete(item, index)}
                         style={{ marginLeft: "15px" }}
                       >
                         <FontAwesomeIcon
                           icon={faTrash}
-                          style={{ marginRight: "15px", fontSize: "1.0em" }}
+                          style={{ fontSize: "1.0em" }}
                         />
-                        Deletar
+                        
                       </Button>
-                      <Button color={"#5e72e4"} style={{ margin: "0px 10px" }}>
-                        <FontAwesomeIcon
-                          icon={faEdit}
-                          style={{ marginRight: "15px", fontSize: "1.0em" }}
-                        />
-                        Editar
-                      </Button>
-                    </div>
+                    </ButtonLinks>
                   </div>
                 );
               })
@@ -200,7 +172,7 @@ const ProjectDocs = (props) => {
               <Button
                 style={{ marginLeft: "10px" }}
                 type="submit"
-                color={"#5e72e4"}
+                color={"linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #7F64AA"}
                 side={true}
               >
                 <FontAwesomeIcon
@@ -216,7 +188,7 @@ const ProjectDocs = (props) => {
                   padding: "15px 18px",
                   marginTop: "30px",
                 }}
-                color={"#2dce89"}
+                color={"linear-gradient(0deg, rgba(229, 243, 237, 0.4), rgba(229, 243, 237, 0.4)), #33B270"}
                 onClick={() => setActiveInput(true)}
               >
                 <FontAwesomeIcon icon={faPlus} style={{ fontSize: "1.25em" }} />
@@ -237,9 +209,8 @@ const ProjectDocs = (props) => {
                 justifyContent: "center",
               }}
             >
-              {thumbs}
+             <SendImageProject />
             </div>
-            <Dropzone onDrop={onDrop} accept={"image/*"} icon={faFileImage} />
           </Info>
         </WrapCard>
         <WrapCard className="WrapInfo">
@@ -247,17 +218,12 @@ const ProjectDocs = (props) => {
             <Title>PDF</Title>
           </Header>
           <Info>
-            {pdfsFiles}
-            <Dropzone
-              onDrop={onDrop}
-              accept={[".pdf", ".docx"]}
-              icon={faFilePdf}
-            />
+          <SendPdfProject />
           </Info>
         </WrapCard>
       </Wrapper>
-    </div>
-  );
-};
+    </Container>
+ )   
+}
 
 export default ProjectDocs;

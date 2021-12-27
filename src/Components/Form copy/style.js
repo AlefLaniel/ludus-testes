@@ -3,16 +3,16 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 85vh;
   align-items: center;
   justify-content: center;
-  background: #1F4135;
+  background: #fffafa;
   width: 100%;
   height: 80%;
   padding: 0px 0px 0px 0px;
 `;
 
-export const WrapContainer = styled.form`
+export const WrapContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,7 +30,7 @@ export const WrapContainer = styled.form`
   }
 
   @media (max-width: 500px) {
-    margin-bottom: 100px;
+    margin-bottom: 30px;
     padding: 0px 25px 0px 15px;
   }
 `;
@@ -60,56 +60,25 @@ export const WrapQuestions = styled.div`
 
   display: ${(props) => props.display};
   flex-direction: column;
+  height: auto;
   transition: all 1s cubic-bezier(0.4, 0.25, 0.8, 0.3);
   width: 58.19vw;
-  
 
-  span {
-    display: flex;
-    text-align: center;
-    font-size: 40px;
-    text-transform: uppercase;
-    color: white;
-    margin-bottom: -5px;
-    letter-spacing: 0.125rem;
-    animation-name: top-down-span;
-    animation-duration: 1s;
-    height: auto;
-    font-size: min(50px, 2vw);
-    font-weight: 500;
-    align-self: center;
-
-    @media (max-width: 1000px) {
-      font-size: 20px;
-    }
-
-    p {
-      overflow-wrap: break-word;
-      color: red;
-      text-align: center;
-      position: relative;
-      font-size: min(40px, 1.8vw);
-      font-weight: 400;
-      top: -10px;
-      left: 0px;
-
-      @media (max-width: 1000px) {
-        font-size: 15px;
-      }
-    }
+  h3{
+    font-size: 20px;
   }
 
   p {
     text-align: justify;
-    color: white;
-    font-size: 20px;
+    color: #000;
+    font-size: 16px;
     font-weight: 300;
     padding: 10px 0px;
     margin-top: 0px;
     margin-bottom: 5px;
     animation-name: top-down-span;
     animation-duration: 1s;
-    
+    font-family: var(--font-familyS);
   }
 
   textarea {
@@ -119,17 +88,17 @@ export const WrapQuestions = styled.div`
     height: 31.81vh;
     font-size: 1.5rem;
     padding: 10px;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
+    background: #E5F3ED;
+    border-radius: 10px;
+    color: black;
     border: none;
-    border-radius: 8px;
     animation-name: top-down;
     animation-duration: 1s;
   }
 
   textarea::placeholder {
     opacity: 0.4;
-    color: white;
+    color: #000;
   }
 
   @media (max-width: 768px) {
@@ -138,7 +107,7 @@ export const WrapQuestions = styled.div`
     padding: 0;
 
     p{
-      font-size: 18px;
+      font-size: 16px;
     }
 
     textarea {
@@ -150,7 +119,7 @@ export const WrapQuestions = styled.div`
     
     p{
       
-      font-size: 18px;
+      font-size: 14px;
     }
   }
 `;
@@ -169,11 +138,11 @@ export const WrapAnchor = styled.div`
 export const Button = styled.button`
   display: ${(props) => props.display};
   cursor: pointer;
-  background: #03A47E;
+  background: #7F64AA;
   color: #fff;
   text-decoration: none;
-  padding: 15px;
-  font-size: 20px;
+  padding: 10px;
+  font-size: 18px;
   font-weight: 600;
   position: relative;
   top: 0;
@@ -184,17 +153,23 @@ export const Button = styled.button`
 
   :active {
     top: 2px;
+  }
+
+  @media (max-width: 768px){
+    padding: 10px;
+    align-self: center;
+    font-size: 16px;
   }
 `;
 
 export const ButtonBefore = styled.button`
   display: ${(props) => props.display};
   cursor: pointer;
-  background: #616262;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #1F4139;
   color: #fff;
   text-decoration: none;
-  padding: 15px;
-  font-size: 20px;
+  padding:  10px;
+  font-size: 18px;
   font-weight: 600;
   position: relative;
   top: 0;
@@ -206,29 +181,11 @@ export const ButtonBefore = styled.button`
   :active {
     top: 2px;
   }
-`;
 
-export const PopUp = styled.div`
-  display: ${(props) => props.active};
-  flex-direction: column;
-  width: 90vw;
-  height: 90vh;
-  color: white;
-
-  p {
-    font-weight: 300;
-    margin: 10px 0px;
-  }
-
-  h3 {
-    margin: 10px 0px;
-  }
-
-  h4 {
-    color: black;
-    text-align: center;
-    font-size: 1.3em;
-    font-weight: 400;
+  @media (max-width: 768px){
+    padding: 10px;
+    align-self: center;
+    font-size: 16px;
   }
 `;
 
@@ -239,29 +196,6 @@ export const WrapButtons = styled.div`
   margin: 15px 0px;
 `;
 
-export const WrapAnswer = styled.div`
-  display: grid;
-  padding: 30px 8vw;
-  color: black;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 2vw;
-  align-items: center;
-  @media (max-width: 1100px) {
-    display: flex;
-    flex-direction: ${(props) =>
-      props.direction ? props.direction : "column"};
-  }
-
-  img {
-    width: 400px;
-    justify-self: center;
-
-    @media (max-width: 550px) {
-      width: 250px;
-    }
-  }
-`;
-
 export const Header = styled.div`
   background: #03A47E;
   padding: 20px;
@@ -269,19 +203,12 @@ export const Header = styled.div`
   place-content: center;
 `;
 
-export const ModalButton = styled.a`
-  background: ${(props) => props.color};
-  text-decoration: none;
-  outline: none;
-  padding: 15px 25px;
-  font-size: 18px;
-  cursor: pointer;
-  color: white;
-  font-weight: 600;
-  margin: 0px 15px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  :hover {
-    background: ${(props) => props.hoverColor};
-  }
+
+export const CountCaract = styled.div`
+  display: flex;
+  align-items: center;
+  font-family: var(--font-familyP);
+  font-size: 12px;
+  margin-bottom: 3px;
+
 `;

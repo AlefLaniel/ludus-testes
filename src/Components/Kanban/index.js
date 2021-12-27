@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import produce from "immer";
 import KanbanContext from "./context";
 import KanbanList from "../KanbanList";
-import TopInsideBar from "../TopInsideBar";
 import loadLists from "../../Services/apiKanban";
 import loadStory from "../../Services/userStory";
 import StoryList from "../../Components/KanbanList/StoryList";
@@ -17,22 +16,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Container, Button } from "./style";
 import loadProjects from "../../Services/projectApi";
-
-const Anchors = [
-  {
-    text: "Convidar Desenvolvedores",
-    link: "/convidardev",
-    permissions: ["gerente"],
-    icon: faUserFriends,
-    color: "white",
-  },
-  {
-    text: "Documentos",
-    link: "/documentos",
-    icon: faClipboardList,
-    color: "white",
-  },
-];
 
 let data = loadLists();
 let storyData = loadStory();
@@ -67,6 +50,8 @@ const Kanban = () => {
     );
   };
 
+
+// eslint-disable-next-line
   const ButtonComponent = () => {
     return (
       <Button onClick={toggleDrawer(true)}>
@@ -89,7 +74,6 @@ const Kanban = () => {
           height: "100%",
         }}
       >
-        <TopInsideBar Anchors={Anchors} Component={ButtonComponent()} />
         <Container>
           <StoryList />
           {lists.map((list, index) => (

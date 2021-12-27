@@ -14,8 +14,8 @@ export const Container = styled.div`
 export const Grid = styled.div`
     display: grid;
 
-    grid-template-columns: 70px auto;
-    grid-template-rows: 67px auto;
+    grid-template-columns: 80px auto;
+    grid-template-rows: 70px auto;
 
     grid-template-areas: 
         'SP TB'

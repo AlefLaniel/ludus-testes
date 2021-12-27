@@ -6,8 +6,9 @@ export const Container = styled.div`
   max-height: 85vh;
   flex: 0 0 290px;
   width: 10px;
-  background-color: #00c4ff;
-  border-radius: 5px;
+  background: #E5F3ED;
+  box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
   white-space: normal;
   opacity: ${({ done }) => (done === true ? 0.6 : 1)};
 
@@ -27,8 +28,13 @@ export const Container = styled.div`
     }
 
     h2 {
-      font-weight: 900;
-      font-size: 18px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      font-family: var(--font-familyP);
+      line-height: 23px;
+
+      color: #58595B;
       padding: 0 8px;
     }
 
@@ -76,7 +82,8 @@ export const Container = styled.div`
 export const AddCard = styled.button`
   display: ${(props) => (props.done !== true ? "initial" : "none")};
   border: none;
-  background: #3b5bfd;
+  background: linear-gradient(0deg, rgba(229, 243, 237, 0.2), rgba(229, 243, 237, 0.2)), #33B270;
+  border-radius: 20px;
   color: white;
   padding: 10px;
   cursor: pointer;
@@ -90,12 +97,12 @@ export const AddCard = styled.button`
 `;
 
 export const WrapCard = styled.form`
-  background: #fff;
   display: ${(props) => (props.show ? "flex" : "none")};
   flex-direction: column;
-  box-shadow: 2px 2px 4px 0 rgb(0 2 2);
   border-top: 20px solid rgba(230, 236, 245, 0.4);
-  border-radius: 5px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 
   textarea {
     font-weight: 500;
@@ -122,7 +129,7 @@ export const WrapButtons = styled.div`
 
 export const Button = styled.button`
   font: 400 13.3333px Arial;
-  border-radius: 2px;
+  border-radius: 5px;
   padding: 10px;
   border: none;
   color: white;

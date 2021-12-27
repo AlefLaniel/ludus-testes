@@ -4,7 +4,6 @@ import Card from "../Card";
 import AddCard from "../AddCard";
 
 import { Container, WrapList } from "./style.js";
-import TopInsideBar from "../TopInsideBar";
 import {
   faPlus,
   faCheckSquare,

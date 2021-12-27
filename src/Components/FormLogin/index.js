@@ -2,46 +2,50 @@ import React, { useState, useContext } from "react";
 import http from "../../Services/httpRequest";
 import { getId, idUser, login, logout } from "../../Services/auth";
 
-import Logo from "../../Assets/Logo.PNG";
+import Logo from "../../Assets/Logo.png";
 
 import { Image, Flex,Box, Text } from "@chakra-ui/core";
-import { Form, Button, WrapButtons, WrapLink } from "./style.js";
+import { Form, Button, WrapLink, Input } from "./style.js";
 import { Link, useHistory } from "react-router-dom";
-import TextField from "@material-ui/core/TextField";
-import Accordion from '@material-ui/core/Accordion';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import Alert from "@material-ui/lab/Alert";
-import { width } from "dom-helpers";
-import Password from "antd/lib/input/Password";
 import  { Context } from "../../Context/contextApi";
 
 
 console.log(window.innerWidth)
-
-var auth = false;
 
 var errorNow;
 
 
 
 const CustomBox = {
-  bg: "#263B37",
-  borderRadius: "3px",
+  bg: "var(--primary)",
+  borderRadius: "20px",
   padding: "32px 40px",
   boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px",
-  
 };
+
 const FormLogin = () => {
-  var { loga, set_iD, id }   = useContext(Context);
+  var { loga, auth }   = useContext(Context);
   let history = useHistory();
   let [email, setEmail] = useState('');
   let [password, setPassword] = useState('');
   let [error, setError] = useState();
 
+  function loadingLogin() {
+      if(auth && !error){
+        return <CircularProgress size='20px'/>
+      }
+      if(!auth || error){
+        return 'Continuar'
+      }
+  }
 
   const HandleSubmit = (e) => {
     e.preventDefault();
     if (password && email) {
-      console.log(window.localStorage);
+      console.log(window.innerHeight);
       http
         .post("/login", {
           email,
@@ -52,6 +56,7 @@ const FormLogin = () => {
           login(result.data.token);
           console.log();
           idUser(result.data._id);
+          loga();
           console.log(getId());
           http.defaults.headers.Authorization = `Bearer ${result.data.token}`;
           history.push("/salas");
@@ -59,7 +64,6 @@ const FormLogin = () => {
         .catch((err) => {
           console.log(err);
 
-          errorNow = err.response.status;
           setError(err.response.data.message);
         });
     } else {
@@ -71,7 +75,7 @@ const FormLogin = () => {
   
   return  (
     <Flex direction="column" align="center" justify="center">
-      <Image src={Logo} alt="Ludusfy" margin="50px 0px" />
+      <Image src={Logo} alt="Ludusfy" margin="50px 0px" width="200px" />
       <Box {...CustomBox} width={[
          "90%", // base
          "70%", // 480px upwards
@@ -84,6 +88,7 @@ const FormLogin = () => {
           fontSize="24px"
           fontWeight="700"
           color="#FFF"
+          marginBottom="10px"
         >
           Entre na sua conta
         </Text>
@@ -91,74 +96,29 @@ const FormLogin = () => {
         <Alert severity="error">{error}</Alert>
         : null}
         <Form onSubmit={HandleSubmit}>
-          {(error && email === '') || (error === 'Usuário ou Senha inválidos')  || (error === 'Esse email não existe')  ?
-          <TextField 
-          error
-          onChange={e => setEmail(e.target.value)}
-          id="outlined-error-helper-text"
-          variant="outlined"
-          required
-          style={{ backgroundColor: '#21302C' }}
-          InputProps={{
-            style: {
-              fontFamily: 'nunito', color: 'white', borderColor: 'white'
-            }}}
-            label="Digitar e-mail"
-        />
-          :
-          <TextField
-           onChange={(e) => setEmail(e.target.value)}
-            style={{ background: '#21302C'}}
-           InputLabelProps={{
-             style: {color: "#FFF"},
-           }}
-           InputProps={{
-             style: {
-               fontFamily: 'nunito', color: 'white', borderColor: 'white'
-             }}}
-            id="outlined-basic"
-           label="Digitar e-mail"
-            variant="outlined"
-        />
-        }
-        {(error && password === '') || error ? 
-          <TextField 
-          error
-          onChange={e => setPassword(e.target.value)}
-          id="outlined-error-helper-text"
-          variant="outlined"
-          required
-          type="password"
-          style={{ backgroundColor: '#21302C' }}
-          InputProps={{
-            style: {
-              fontFamily: 'nunito', color: 'white', borderColor: 'white'
-            }}}
-            label="Digitar Senha"
-        />
-        : 
-          <TextField
-          onChange={(e) => setPassword(e.target.value)}
-          style={{ background: '#21302C'}}
-          InputLabelProps={{
-            style: {color: "#FFF"},
-          }}
-          InputProps={{
-            style: {
-              fontFamily: 'nunito', color: 'white', borderColor: 'white'
-            }}}
-          id="outlined-basic"
-          type="password"
-          label="Digitar Senha"
-          variant="outlined"
-        />
-        }
+        <Input>
+                <p id="name-user" style={{ marginBottom: '10px', fontSize: "100%"}}>Email</p>
+                <input
+                  onChange={e => setEmail(e.target.value)}
+                  placeholder="Digitar e-mail"
+                  type="text"
+                  required
+                />
+              </Input>
+              <Input>
+                <p id="name-user" style={{ marginBottom: '10px', fontSize: "100%" }}>Senha</p>
+                <input
+                  onChange={e => setPassword(e.target.value)}
+                  placeholder="Digitar Senha"
+                  type="password"
+                  required
+                />
+              </Input>
          
          <Button
             type="submit"
-            c={"#03A47E"} 
-            ch={"#048466"}
-            onClick={loga}
+            c={"var(--secondary)"} 
+            ch={"var(--tertiary)"}
           >
              <Text
               fontFamily="'Poppins',sans-serif"
@@ -166,17 +126,19 @@ const FormLogin = () => {
               color="#FFF"
               fontSize="18px"
             >
-               Continuar
+               {loadingLogin()}
             </Text>
           </Button>
         </Form>
         <WrapLink>
-          <Link to="/salas" style={{
+          <Link to="/forgotpassword" style={{
             color: "#fff"
-          }}>Não consegue entrar?</Link>
-          &bull;
+          }}>Esqueci minha senha</Link>
+          <text>
+            -
+          </text>
           <Link to="/cadastro" style={{
-            color: "#03A47E"
+            color: "#fff"
           }}> Criar conta</Link>
         </WrapLink>
       </Box>

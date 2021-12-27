@@ -85,11 +85,11 @@ const KanbanList = ({ data, index: listIndex }) => {
             placeholder="Título do Card"
           />
           <WrapButtons>
-            <Button color={"#5ee462"} type="submit">
+            <Button color={"#03A47E"} type="submit">
               Salvar
             </Button>
             <Button
-              color={"#f53939"}
+              color={"#E14444"}
               onClick={() => setShow(false)}
               type="reset"
             >

@@ -8,9 +8,10 @@ export const Button = styled.div`
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+
   :hover {
       border-radius: 35%;
       background-color: white;

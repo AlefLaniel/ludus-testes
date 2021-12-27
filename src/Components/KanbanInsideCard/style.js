@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const ListItem = styled.button`
-  background: ${(props) => (props.name === "true" ? "#000" : "transparent")};
+  background: ${(props) => (props.name === "true" ? "#58595B" : "transparent")};
   border: none;
+  border-radius: 5px;
   display: flex;
   padding: 10px 30px 10px 10px;
   font-size: 17px;
@@ -14,18 +15,26 @@ export const ListItem = styled.button`
   color: ${(props) => (props.name === "true" ? "white" : "white")};
 
   :hover {
-    background: #000;
+    background: #58595B;
     color: white;
   }
 
   svg {
     margin-right: 10px;
   }
+
+  @media(max-width: 425px){
+    width: 30vw;
+  }
 `;
 
 export const List = styled.nav`
   padding: 10px;
-  background: #3c9cff;
+  background: rgba(127, 100, 170, 0.5);
+
+  @media(max-width: 425px){
+    width: 40vw;
+  }
 `;
 
 export const WrapContent = styled.div`
@@ -36,8 +45,8 @@ export const WrapContent = styled.div`
 /* GERAL PAGE*/
 export const PageContent = styled.div`
   width: 100%;
-  height: 100vh;
-  background: #f2f4fa;
+  min-height: 100vh;
+  background: #E5F3ED;
 `;
 
 export const Header = styled.div`
@@ -46,7 +55,7 @@ export const Header = styled.div`
   justify-content: space-between;
   padding: 20px 50px;
   font-size: 25px;
-  background: #12ccee;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #7F64AA;
   height: 350px;
 
   .title-input {
@@ -83,20 +92,46 @@ export const Header = styled.div`
     font-weight: 400;
     margin: 10px 0px;
   }
+
+  @media (max-width: 768px){
+    height: 50vh;
+  }
+
+  @media (max-width: 425px){
+    height: 65vh;
+    padding: 10px 20px;
+    .title-input {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 360px){
+    height: 62vh;
+  }
+
 `;
 
 export const Body = styled.div`
-  display: grid;
+  display: flex;
   padding: 20px 50px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 30px;
   position: relative;
   top: -100px;
+
+  @media (max-width: 768px){
+    margin-top: 50px;
+    flex-direction: column;
+  }
+
+  @media (max-width: 425px){
+    padding: 10px 35px;
+  }
 `;
 
 export const WrapCards = styled.div`
   background: ${(props) => props.color};
   border-radius: 5px;
+  margin-right: 20px;
+  width: 36.3vw;
   min-height: 30vh;
   max-height: 70vh;
   overflow-y: auto;
@@ -122,8 +157,24 @@ export const WrapCards = styled.div`
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #aaa;
-    border-radius: 50px;
+    border-
+    radius: 50px;
   }
+
+  @media (max-width: 1024px){
+    width: 32.3vw;
+  }
+
+  @media (max-width: 768px){
+    width: 50.3vw;
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 425px){
+    width: 63.5vw;
+    margin-right: 0;
+  }
+
 `;
 
 export const Title = styled.div`
@@ -147,12 +198,13 @@ export const Title = styled.div`
   }
 
   button {
-    background: #5e72e4;
+    background: linear-gradient(0deg, rgba(229, 243, 237, 0.2), rgba(229, 243, 237, 0.2)), #33B270;;
     margin-right: 20px;
     height: fit-content;
     padding: 0.25rem 0.5rem;
     line-height: 1.5;
     font-weight: 500;
+    border-radius: 5px;
     border: 1px solid transparent;
     cursor: pointer;
     color: #fff;
@@ -163,6 +215,24 @@ export const Title = styled.div`
         0 3px 6px rgba(0, 0, 0, 0.08);
       -webkit-transform: translateY(-1px);
       transform: translateY(-1px);
+    }
+  }
+
+  @media (max-width: 425px){
+
+    button{
+      font-size: 12px;
+    }
+    
+    p{
+      margin-right: 5px;
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 375px){
+    p{
+      font-size: 15px;
     }
   }
 `;
@@ -185,6 +255,7 @@ export const WrapMembers = styled.div`
     margin-right: 2px;
     object-fit: cover;
   }
+
 `;
 
 export const Label = styled.div`
@@ -193,10 +264,20 @@ export const Label = styled.div`
   font-size: 14px;
   margin-right: 10px;
   background: ${(props) => props.color};
+
+  @media (max-width: 768px){
+    margin-bottom: 5px;
+  }
+
+  @media (max-width: 425px){
+    padding: 3px 5px;
+    font-size: 12px;
+    text-align: center;
+  }
 `;
 
 export const WrapCloseIcon = styled.div`
-  background: #3560af;
+  background: linear-gradient(0deg, rgba(229, 243, 237, 0.2), rgba(229, 243, 237, 0.2)), #33B270;
   position: relative;
   top: 6px;
   height: fit-content;
@@ -258,7 +339,8 @@ export const NewComment = styled.form`
     margin-left: 10px;
     border: none;
     cursor: pointer;
-    background: #5e72e4;
+    border-radius: 5px;
+    background: #7F64AA;
     color: #fff;
 
     :hover {
@@ -310,13 +392,50 @@ export const Activity = styled.div`
 export const WrapLabels = styled.div`
   display: flex;
   margin-right: 5vw;
+
+  #itemstags{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #historyuser{
+    display: flex;
+    flex-direction: row;
+  }
+  @media(max-width: 768px){
+    margin-right: 2vw;
+    width: 16vw;
+
+    #itemstags,
+    #historyuser{
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 5px;
+    }
+
+    #calendar{
+      width: auto;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 425px){
+    flex-direction: column;
+    margin-right: 5vw;
+    h1{
+      font-size: 18px;
+      text-align: justify;
+    }
+  }
 `;
 
 export const AddButton = styled.button`
   padding: 0px 9px;
   border: none;
   height: 30px;
-  background: #5e72e4;
+  border-radius: 50%;
+  background: linear-gradient(0deg, rgba(229, 243, 237, 0.2), rgba(229, 243, 237, 0.2)), #33B270;
   color: white;
   cursor: pointer;
 
@@ -324,5 +443,15 @@ export const AddButton = styled.button`
     box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
     -webkit-transform: translateY(-1px);
     transform: translateY(-1px);
+  }
+
+`;
+
+export const AddButtonC = styled(AddButton)`
+  border-radius: 5px;
+
+  @media(max-width: 425px){
+    width: 20vw;
+    height: auto;
   }
 `;

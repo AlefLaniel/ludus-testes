@@ -6,20 +6,14 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #7F64AA;
-  max-height: 100vh;
+  max-height: 100%;
   overflow-y: scroll;
   box-shadow: 0px 0px 3px #3C2A57;
-
   ::-webkit-scrollbar {
     display: none;
   }
+
+  @media (max-width: 320px){
+        max-height: 110.5vh;
+    }
 `;
-
-
-
-export const Separator = styled.div`
-  padding: 10px;
-  width: 100%;
-  border-bottom: 2px solid var(--primary);
-`;
-

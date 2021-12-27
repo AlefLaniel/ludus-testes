@@ -6,21 +6,26 @@ import { getToken } from "../../Services/auth";
 import http from "../../Services/httpRequest";
 import TextField from "@material-ui/core/TextField";
 
+import logoCaVerde from "../../Assets/Camaleão.png";
+
 import {
   WrapForm,
   Container,
   WrapInput,
-  FileInput,
   WrapCheckBox,
+  ImageRoom
 } from "./style";
 
 var data;
 const WrapRoomForm = () => {
   let history = useHistory();
-const [error, setError] = useState();
-const [display, setDisplay] = useState(true);
+// eslint-disable-next-line
+const [error, setError] = useState(); 
+// eslint-disable-next-line
+const [display, setDisplay] = useState(true); //no-unused-vars
 const [nameRoom, setNameRoom] = useState('');
 const [isPublicRoom, setIsPublicRoom] = useState();
+// eslint-disable-next-line
 const [image_url, setImage_url] = useState('');
 //Colocar a função Submit aqui↓
 const handleAddRoomSubmit = (e) =>{
@@ -46,8 +51,6 @@ const config = {
   headers: { Authorization: `Bearer ${getToken()}` }
 };
 
-//http.defaults.headers.authorization = `Bearer ${getToken}`;
-
 if(data.name !== '' && data.isPublic !== ''){
   http
   .post("/room", data, config)
@@ -59,7 +62,6 @@ if(data.name !== '' && data.isPublic !== ''){
   .catch((err) =>{
     console.log("Ocorreu algum erro")
     console.log(err.response);
-    //setError(err.response.data.message);
     setDisplay(true)
   });
   }else{
@@ -73,12 +75,16 @@ if(data.name !== '' && data.isPublic !== ''){
   return (
     <Container>
       <WrapForm onSubmit={handleAddRoomSubmit}>
-      
         <h1>
-        <BookOpen color="white" size={24}/>
+        <BookOpen color="black" size={24} style={{marginRight: '10px'}}/>
           Nova Sala</h1>
+        <WrapInput >
+          <ImageRoom>
+            <img src={logoCaVerde} alt="logo" />
+          </ImageRoom>
+        </WrapInput>
         <WrapInput>
-        <p>Nome da Sala*</p>
+        <p id="name-room">Nome da Sala*</p>
         <TextField 
           value={nameRoom}
           onChange={e => setNameRoom(e.target.value)}
@@ -88,28 +94,10 @@ if(data.name !== '' && data.isPublic !== ''){
           required
           size="small"
           type="text"
-          style={{ backgroundColor: '#21302C' }}
+          style={{ backgroundColor: '#C2D2CA', borderRadius: '10px' }}
           InputProps={{
             style: {
-              fontFamily: 'nunito', color: 'white', borderColor: 'white'
-            }}}
-            label="Digite aqui"
-        />
-        </WrapInput>
-        <WrapInput >
-          <p id="tagroom">Imagem da Sala</p>
-          <TextField 
-          value={image_url}
-          onChange={e => setImage_url(e.target.value)}
-          id="outlined-error-helper-text"
-          variant="outlined"
-          placeholder="URL da Imagem"
-          size="small"
-          type="text"
-          style={{ backgroundColor: '#21302C' }}
-          InputProps={{
-            style: {
-              fontFamily: 'nunito', color: 'white', borderColor: 'white'
+              fontFamily: 'Renogare, sans-serif', color: 'black', borderColor: 'white', background: '#C2D2CA'
             }}}
             label="Digite aqui"
         />

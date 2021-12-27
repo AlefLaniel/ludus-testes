@@ -24,4 +24,21 @@ export const NameProject = styled.a`
   font-size: 23px;
   font-weight: 700;
   color: var(--white);
+
+  
+  @media (max-width: 425px){
+    margin-top: 20px;
+    font-size: 18px;
+  }
+`;
+
+export const Loading = styled.div`
+    display: flex;
+    align-items: center;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    width: 100%;
+    background-color: var(--primary);
 `;

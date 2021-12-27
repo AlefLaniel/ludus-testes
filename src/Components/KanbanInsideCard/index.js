@@ -41,6 +41,7 @@ import {
   NewComment,
   WrapLabels,
   AddButton,
+  AddButtonC
 } from "./style.js";
 import { SwipeableDrawer } from "@material-ui/core";
 
@@ -174,15 +175,9 @@ const General = ({ toggleDrawer, data }) => {
             onKeyDown={HandleSaveTitle}
           />
           <Status>
-            <WrapLabels>
+            <WrapLabels id="tags">
               <h1>Tags</h1>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
+              <div id="itemstags" >
                 {data.labels && data.labels[0]
                   ? data.labels.map((item, index) => {
                       return item.status ? (
@@ -212,7 +207,7 @@ const General = ({ toggleDrawer, data }) => {
                 show={showUser}
                 setShow={setShowUser}
               />
-              <div style={{ display: "flex", flexDirection: "row" }}>
+              <div id="historyuser">
                 {data.story ? (
                   <Label color={data.story.theme.color}>
                     {data.story.theme.name}
@@ -223,7 +218,7 @@ const General = ({ toggleDrawer, data }) => {
                 </AddButton>
               </div>
             </WrapLabels>
-            <WrapLabels>
+            <WrapLabels id="calendar">
               <h1>Data de Entrega</h1>
               <MiniCalendar
                 delivery={delivery}
@@ -235,10 +230,12 @@ const General = ({ toggleDrawer, data }) => {
                 setDateTime={HandleDateTime}
               />
               <div style={{ display: "flex" }}>
-                <AddButton
+                <AddButtonC
                   style={{
                     padding: "8px 7px",
+                    height: "auto",
                     display: "flex",
+                    alignItems: "flex-start",
                     justifyContent: "center",
                   }}
                   onClick={() => setDisplayCalendar(true)}
@@ -250,7 +247,7 @@ const General = ({ toggleDrawer, data }) => {
                   <p style={{ fontSize: "14px", fontWeight: 400 }}>
                     {dateTime ? dateTime : "Definir"}
                   </p>
-                </AddButton>
+                </AddButtonC>
               </div>
             </WrapLabels>
           </Status>
@@ -328,7 +325,7 @@ const General = ({ toggleDrawer, data }) => {
               : null}
           </WrapComments>
         </WrapCards>
-        <WrapCards color={"#19224d"}>
+        <WrapCards color={"#367469"}>
           <Title color={"#fff"}>
             <p>
               <FontAwesomeIcon icon={faListUl} />

@@ -1,6 +1,6 @@
 import React from "react";
 
-import bgImg from "../../Assets/backgroundLoginCadastro.jpg";
+import bgImg from "../../Assets/background.png";
 import FormCadastro from "../../Components/FormCadastro";
 
 import { Container } from "../Login/style.js";

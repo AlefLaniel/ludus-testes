@@ -10,6 +10,10 @@ export const Container = styled.div`
   @media (max-width: 500px){
     margin-bottom: 10vh;
   }
+
+  @media (max-width: 360px){
+    margin-bottom: 5vh;
+  }
 `;
 
 export const WrapForm = styled.form`
@@ -18,10 +22,11 @@ export const WrapForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 4vh 2vw;
-  background: #1F4139;
+  background: #E5F3ED;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
  
+
 
   @media (max-width: 360px){
     width: 90%;
@@ -29,9 +34,10 @@ export const WrapForm = styled.form`
 
   h1 {
     align-self: center;
-    color: white;
+    color: black;
+    font-size: 25px;
     margin-bottom: 20px;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-familyP);
   }
 
   p {
@@ -40,8 +46,8 @@ export const WrapForm = styled.form`
     font-size: 20px;
     align-self: center;
     margin: 5px 0px;
-    font-family: 'Poppins', sans-serif;
-    color: white;
+    font-family: var(--font-familyP);
+    color: black;
   }
 
   button {
@@ -52,10 +58,10 @@ export const WrapForm = styled.form`
     margin: 30px 0px 0px;
     padding: 10px 39px;
     text-align: center;
+    font-family: var(--font-familyP);
     outline: none;
     border: none;
-    border: 1px solid #03A47E;;
-    background: #03A47E;
+    background: linear-gradient(0deg, rgba(229, 243, 237, 0.4), rgba(229, 243, 237, 0.4)), #33B270;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     font-family: 'Poppins', sans-serif;
@@ -64,6 +70,10 @@ export const WrapForm = styled.form`
     font-size: 20px;
     line-height: 30px;
     color: white;
+    cursor: pointer;
+    :hover{
+      background: var(--secondary);
+    }
   }
 
   button:active {
@@ -72,6 +82,11 @@ export const WrapForm = styled.form`
 
   #tagroom{
     margin-bottom: 10px;
+    font-family: var(--font-familyS);
+  }
+
+  #name-room{
+    font-family: var(--font-familyS);
   }
 `;
 
@@ -85,7 +100,10 @@ export const WrapInput = styled.div`
     margin-right: 20px;
     align-self: initial;
     font-weight: normal;
+    font-family: var(--font-familyP);
   }
+
+
 
   @media (max-width: 500px) {
     flex-direction: column;
@@ -99,7 +117,7 @@ export const WrapInput = styled.div`
   @media (max-width: 340px){
     p{
       align-self: flex-start;
-      margin-left: 48px;
+      margin-left: 28px;
     }
 
     #tagroom{
@@ -120,7 +138,7 @@ export const WrapCheckBox = styled.div`
   label{
 
     font-family: 'Poppins', sans-serif;
-    color: white;
+    color: black;
     margin-right: 10px;
   }
 
@@ -146,15 +164,22 @@ export const TextInput = styled.input`
 
 `;
 
-export const FileInput = styled.input`
-    width: 54.4%;
-    color: white;
+export const ImageRoom = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 150px;
+  margin-bottom: 20px;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(100deg, rgba(200, 175, 249, 0.5), #C2D2CA);
+  border-radius: 50%;
+  img{
+    width:  90px;
+    height: 70px;
+  }
 
-    @media (max-width: 500px){
-      width: 70%;
-    }
-
-
-
-
+  @media (max-width: 425px){
+    margin-left: 0px;
+  }
 `;

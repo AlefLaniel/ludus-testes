@@ -1,63 +1,95 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background: #333333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #E5F3ED;
   border-radius: 5px;
   height: fit-content;
   text-align: center;
-  color: white;
+  color: black;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-  img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-  }
+
 
   h1 {
-    font-size: 20px;
+    font-size: 30px;
     margin-bottom: 10px;
+    font-family: var(--font-familyP);
+  }
+
+  h2 {
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: 500;
+    font-family: var(--font-familyP);
+    
   }
 
   p {
+    margin-top: 10px;
     margin-bottom: 10px;
     text-align: justify;
+    font-family: Quicksand;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 21px;
   }
 
-  div {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0px;
-  }
+`;
 
-  button {
-    background: rgb(0 161 255);
-    outline: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 5px;
+export const ImageProject = styled.div`
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12)), #7F64AA;
+  :hover {
+      color: var(--tertiary);
+      }
+
+      img {
+    width: 100px;
+     height: 100px;
+    object-fit: cover;
+    margin-right: 8px;
+    border-radius: 50%;
   }
 `;
 
 export const Button = styled.button`
   font-size: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  margin: 10px 5px;
+  height: 30px;
+  width: 100px;
   font-weight: 500;
   background-color: transparent !important;
   transition: 0.5s all;
+  color: ${(props) => props.rover} !important;
 
   svg {
-    transition: 0.5s all;
+    transition: 0.2s all;
+    color: ${(props) => props.rover} !important;
   }
 
   :hover {
-    transition: 0.5s all;
-    color: ${(props) => props.color};
-
+    transition: 0.2s all;
+    background-color:  ${(props) => props.color} !important ;
+    color: white !important;
+    
     svg {
-      transition: 0.5s all;
-      color: ${(props) => props.color} !important;
+      transition: 0.1s all;
+      color: white !important;
     }
   }
 
@@ -69,21 +101,20 @@ export const Button = styled.button`
 `;
 
 export const Details = styled.button`
-  background: rgb(0 161 255);
+  background: transparent;
   outline: none;
   border: none;
-  color: white;
+  color: black;
   cursor: pointer;
   padding: 5px;
-  width: 100%;
   letter-spacing: 3px;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 500;
   align-self: center;
   padding: 15px !important;
 
   :hover {
-    background: rgb(0 137 255);
+    color: var(--primary);
   }
 `;
 
@@ -94,11 +125,10 @@ export const WrapInfo = styled.div`
 `;
 
 export const ModalInfo = styled.div`
-  width: 90vw;
-  height: 90vh;
-
+  width: 70vw;
+  height: 80vh;
   @media (max-width: 500px) {
-    width: 90vw;
+    width: 70vw;
     display: flex;
     flex-direction: column;
   }
@@ -109,8 +139,8 @@ export const Header = styled.div`
   text-align: center;
   padding: 20px;
   color: white;
-  background: #00a1ff;
-  margin-bottom: 10px;
+  width: 100%;
+  background: var(--primary);
   justify-content: center;
   align-items: center;
 `;
@@ -138,16 +168,33 @@ export const InfoCapsule = styled.div`
 `;
 
 export const WrapDescription = styled.div`
-  display: grid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 30px;
-  padding: 20px 10vw;
-  background: white !important;
+  border-radius: 20px;
+  grid-column-gap: 50px;
+  padding: 50px 15vw;
+  background: #E5F3ED !important;
+  
 
   h2 {
     text-align: center;
     margin-bottom: 25px;
+    font-family: var(--font-familyP);
+    
   }
+
+  p {
+    margin-top: 10px;
+    text-align: justify;
+    font-family: Quicksand;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 21px;
+  }
+
 
   @media (max-width: 1450px) {
     padding: 40px 5vw;
@@ -169,19 +216,39 @@ export const WrapDescription = styled.div`
 
 export const Description = styled.div`
   align-self: center;
-  background: white !important;
+  
 
-  p {
-    text-align: justify;
-    margin-bottom: 5px;
-  }
 `;
 
-export const Image = styled.img`
-  place-self: center;
-  height: 300px;
+export const InitialName = styled.div`
+    font-size: 30px;
 
-  @media (max-width: 500px) {
-    height: 200px;
-  }
+    font-weight: bold;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff; 
+    :hover{
+        color: var(--tertiary);
+       font-size: 35px;
+    }
+`;
+
+export const Edit = styled.button`
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #E5F3ED;
+  box-shadow: inset 0px 3px 4px rgba(0, 0, 0, 0.25);
+  position: relative;
+  align-self: flex-end;
+  margin-left: -35px;
+  border: none;
+  cursor: pointer;
+
+
+
+
 `;

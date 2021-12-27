@@ -1,61 +1,55 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import UserContext, { Context } from "../../Context/contextApi";
-import { getId, getToken, idUser, isAuthenticated, logout } from "../../Services/auth";
+import { getId } from "../../Services/auth";
 import http from "../../Services/httpRequest";
 
-import TopInsideBar from "../TopInsideBar";
-import AddCard from "../AddCard";
 import RoomCard from "../RoomCard";
 
-import { Container, WrapList } from "./style.js";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { Container, WrapList, Loading } from "./style.js";
 
-import loadRooms from "../../Services/roomsApi";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { Text } from "@chakra-ui/core";
 
-const data = loadRooms();
-
-const Anchors = [
-  {
-    text: "Criar uma sala",
-    link: "/formulariosala",
-    icon: faPlus,
-    color: "white",
-  },
-];
 
 const RoomsList = () => {
-
   const [rooms, setRooms] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const response = await http.get(`/room/userRooms/${getId()}`);
+      const response = await http.get(`/user/${getId()}/member`);
       console.log(response.data);
-      console.log()
-      setRooms(response.data.data);
-    })();
+      setRooms(response.data);
+      setLoading(true)
+    }
+    )();
   }, []);
   
-  console.log(rooms);
+  
+const data = rooms;
+console.log(data)
 
 
   return (
     <Container>
-      
-      {/* <TopInsideBar Anchors={Anchors} /> */}
-      <WrapList checkMockup={rooms}>
-      {rooms.map((item, key)=> (
+      {loading ? <WrapList checkMockup={data}>
+      {data.map((item, key)=> (
             <RoomCard key={key} data={item} />
         ))}
       </WrapList>
-      <WrapList checkMockup={data[0]}>
-        {data[0] ? (
-          data.map((item, index) => <RoomCard key={index} data={item} />)
-        ) : (
-          <AddCard link="/formulariosala" description="Adicionar nova sala" />
-        )}
-      </WrapList>
+      : <Loading>
+          <CircularProgress/>
+        </Loading>}
+     {((data.length === 0) && loading) ?
+          <Text 
+          width="150%"
+          alignSelf="center"
+          alignItems="center"
+          fontFamily="var(--font-familyP)"
+          >
+             Você ainda não possui salas
+          </Text>
+      : ''}
     </Container>
   );
 };

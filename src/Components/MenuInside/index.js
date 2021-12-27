@@ -2,59 +2,42 @@ import React, {useEffect, useState} from "react";
 
 import {
   Container,
-  Separator,
-  Img
+  Separator
 } from "./style.js";
 
 import { Link } from "react-router-dom";
 
 import RommsMenu from "../RommsMenu/index.js";
 
-import { getId, logout } from "../../Services/auth.js";
-import logoCa  from "../../Assets/Camaleão.png"
+import { getId } from "../../Services/auth.js";
 import http from "../../Services/httpRequest.js";
 import IconsMenu from "../IconsMenu/index.js";
 import LogoLudus from "../Logo/index.js";
 
 
-const MenuInside = (props) => {
+const MenuInside = ({ id }) => {
 
   const [roomUsers, setRoomUsers] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const response = await http.get(`/room/userRooms/${getId()}`);
+      const response = await http.get(`/user/${getId()}/member`);
       console.log(response.data);
-      console.log()
-      setRoomUsers(response.data.data);
+      setRoomUsers(response.data);
     })();
   }, []);
 
-
-  console.log(roomUsers);
+  const data = roomUsers;
+  console.log(data);
   return (
     <Container>
-      {/* <Logo>
-        <Link to="/salas">
-          <FontAwesomeIcon icon={faFire} />
-        </Link>
-      </Logo> */}
-
-
       <Link to="/salas"> 
       <LogoLudus logo /> 
       </Link>  
-    
       <Separator />
-      <Link to="/sala">
-      <div>
-      {roomUsers.map((item, key)=> (
-            <RommsMenu key={key} item={item.roomUsers} />
+      {data.map((item, key)=> (
+            <RommsMenu key={key} data={item}/>
         ))}
-
-      </div>
-      </Link>
-      
       <Link to='/formulariosala'>
       <IconsMenu  addSala />
       </Link>

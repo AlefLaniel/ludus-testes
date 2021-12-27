@@ -1,20 +1,21 @@
 import React from "react";
-
-import ProjectList from "../../Components/ProjectList";
 import Menu from "../../Components/MenuInsideProject";
 import TopInsideBar from "../../Components/TopInsideBar";
 import { Grid } from "./style";
-import MenuProject from "../../Components/MenuProject";
-import TitleProject from "../../Components/TitleProject";
+import TitleRoom from "../../Components/TitleRoom";
+import { getTdRoom } from "../../Services/auth";
+import LogoInRoom from "../../Components/LogoInRoom";
+import MenuRoom from "../../Components/MenuRoom";
 
-const InsideRooms = ({ setProjectId }) => {
+const InsideRooms = () => {
+  console.log(getTdRoom());
   return (
     <Grid>
       <Menu page="sala" />
-      <MenuProject /> 
-      <TitleProject />
+      <MenuRoom /> 
+      <TitleRoom />
       <TopInsideBar />
-      {/* <ProjectList setProjectId={setProjectId} /> */}
+      <LogoInRoom />
     </Grid>
   );
 };

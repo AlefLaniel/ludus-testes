@@ -15,38 +15,33 @@ export const Container = styled.div`
 export const Section1 = styled.section`
 
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
   height: 99.5vh;
   width: 100%;
-  background-color: #048C6C;
+  background-color: #7F64AA;
 
   #img1, #img2 {
-    height: 40.94vh;
-    width: 19.03vw;
+    height: 32.10236220472441vh;
+    align-self: flex-end;
     
   }
 
-  @media (min-width: 960px) and (max-width: 1024px){
+  @media (min-width: 1440px) and (max-width: 2500px){
     #img1, #img2 {
-    height: 40.94vh;
-    width: 25.03vw;
-    object-fit: contain;
-    margin-bottom: -80px;
+    height: 22.10236220472441vh;
+    }
   }
+
+  @media (max-width: 1024px){
+    #img1, #img2{
+      height: 20.10vh;
+    }
   }
 
 
 
   @media (max-width: 768px){
-    height: 99.7vh;
-
-    #img2 {
-    height: 40.94vh;
-    width: 39.03vw;
-    object-fit: contain;
-    margin-bottom: -55px;
-  }
   #img1{
     display: none;
   }
@@ -54,14 +49,12 @@ export const Section1 = styled.section`
   }
 
   @media (max-width: 425px){
-    height: 99.7vh;
+    height: 100%;
     flex-direction: column-reverse;
     align-items: flex-start;
-    #img1 {
-    margin-top: 90px;  
-    display: inline;
-    width: 260px;
-    height: 278px;
+
+    #img1 { 
+    display: block; 
     
   }
     #img2{
@@ -78,51 +71,43 @@ export const Text1 = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-self: flex-start;
-  margin-top: 200px;
+  align-self: center;
   width: 60vw;
-  margin-right: 30px;
 
   h1{
     text-align: center;
     font-size: 40px;
-    font-family: 'Pacifico', cursive;
+    font-family: var(--font-familyP);
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 56px;
   }
 
   p{
     text-align: center;
     font-size: 20px;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-familyS);
     color: white;
   }
 
-  @media (min-width: 960px) and (max-width: 1024px){
-    margin-top: 350px;
-  }
-
   @media (max-width: 768px){
-    margin-top: 400px;
+    margin-top: 50px;
 
     h1, p{
       text-align: left;
-      padding-left: 5vw;
+      padding: 0 5vw;
     }
   }
 
 
   @media (max-width: 425px){
     margin-top: 180px;
-    
-    
+    align-self: flex-start;
     h1{
       font-size: 24px;
     }
 
     p{
       font-size: 16px;
-      
     }
 
     h1, p{
@@ -147,39 +132,36 @@ export const Section2 = styled.section`
   padding: 0 5vw;
 
   img{
-    width: 704px;
-    object-fit: contain;
+    height: 71.02362204724409vh;
   }
 
-  @media (min-width: 960px) and (max-width: 1024px){
-    padding:  0 70px;
+  @media (min-width: 1440px) and (max-width: 2500px){
+    img{
+    height: 41.02362204724409vh;
+  }
   }
 
-  img{
-    height: 62.36vh;
-    width: 51.53vw;
-    margin-bottom: 107px;
-    margin-top: 135px;
+  @media (max-width: 1024px){
+    padding: 0 6vw;
+    img{
+      height: 51.02362204724409vh;
+    }
   }
 
   @media (max-width: 768px){
-    padding: 0 4vw;
-    
     img{
-      margin-top: 35px;
-      width: 427px;
-      height: 304px;
+      height: 31.02362204724409vh;
     }
   }
  
   @media (max-width: 425px){
     flex-direction: column;
-    justify-content: flex-start;
     padding: 0 6vw;
-    height: 607px;
+    height: 600px;
+
     img{
-      width: 327px;
-      height: 204px;
+      margin: 0;
+      margin-bottom: 35px;
     }
   }
 `;
@@ -187,7 +169,7 @@ export const Section2 = styled.section`
 export const Text2 = styled.div`
   h1{
     text-align: left;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-familyP);
     font-size: 40px;
     margin-left: 205px;
     margin-bottom: 30px;
@@ -196,72 +178,68 @@ export const Text2 = styled.div`
 
   p{
     text-align: left;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-familyS);
     font-size: 20px;
     margin-left: 205px;
   }
 
-  @media (max-width: 768px){
-
-    h1, p{
-      margin-left: 50px;
-    }
-
-    h1 br, p br{
-      display: none
-    }
-
-    @media (max-width: 425px){
-      h1 {
-        font-size: 20px
-      }
-
-      h1, p{
-        margin-left: 0;
-      }
-
-      p{
-        font-size:16px;
-      }
+  @media (max-width: 1024px){
+    h1{
+      font-size: 30px;
     }
   }
 
-
-  
-`;
-
-export const Section3 = styled(Section2)`
-  background-color: #DEDFCC;
-  flex-direction: row-reverse;
-
-  img{
-    width:  91.968vh;
-    height: 27.01vw;
-    margin-left: 9.28vw;
-  }
-
   @media (max-width: 768px){
-    
-    img{
-      width:  91.968vh;
-      height: 30.01vw;
-      margin: 80px;
+    h1{
+      font-size: 25px;
+      margin-left: 55px;
+      text-align: center;
     }
 
-    @media (max-width: 425px){
-
-      img{
-        width: 327px;
-        height: 204px;
-      }
+    p{
+      font-size: 18px;
+      margin-left: 55px;
+      text-align: center;
     }
   }
 
   @media (max-width: 425px){
-    flex-direction: column;
+    h1, p{
+      margin-left: 0;
+      text-align: center;
+    }
+  }
+
+`;
+
+export const Section3 = styled(Section2)`
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), #C2D2CA;
+  flex-direction: row-reverse;
+  
+  img{
+    margin-left: 205px;
+  }
+
+  @media (max-width: 1024px){
+    padding: 0 6vw;
     img{
-      height: 304px;
+    margin-left: 200px;
+  }
+  }
+
+    @media (max-width: 768px){
+      img{
+        margin-left: 55px;
+      }
+    }
+
+
+  @media (max-width: 425px){
+    flex-direction: column;
+
+    img{
       margin: 0;
+      margin-bottom: 35px;
     }
   }
 
@@ -282,12 +260,8 @@ export const Text3 = styled(Text2)`
 
 export const Section4 = styled(Section2)`
 
-  @media (max-width: 768){
-
-    img{
-      width: 327px;
-      height: 204px;
-    }
+  @media (max-width: 768px){
+    padding: 0 6vw;
   }
 
   @media (max-width: 425px){
@@ -299,5 +273,123 @@ export const Section4 = styled(Section2)`
 `;
 
 export const Text4 = styled(Text2)`
-  
+  @media (max-width: 1024px){
+    h1,p{
+      margin-left: 150px;
+    }
+  }
+
+  @media (max-width: 768px){
+    h1,p{
+      margin-left: 55px;
+    }
+  }
+
+  @media (max-width: 425px){
+    h1,p{
+      margin-left: 0;
+    }
+  }
 `;
+
+export const Section5 = styled(Section3)`
+  img{
+    height: 71.02362204724409vh;
+    align-self: flex-end;
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 1440px) and (max-width: 2500px){
+    img{
+    height: 61.02362204724409vh;
+  }
+  }
+
+  @media (max-width: 1024px){
+    height: 90.47vh;
+    padding: 0 6vw;
+    img{
+      height: 51.02362204724409vh;
+    }
+  }
+
+  @media (max-width: 768px){
+    img{
+      height: 41.02362204724409vh;
+      align-self: center;
+    }
+  }
+
+  @media (max-width: 425px){
+    img{
+      align-self: center;
+      height: 38.02362204724409vh;
+    }
+  }
+
+`;
+
+export const Text5 = styled(Text3)`
+  @media (max-width: 1024px){
+    h1{
+      margin-top: 100px;
+    }
+  }
+
+  @media (max-width: 768px){
+    h1{
+      margin-top: 0px;
+    }
+  }
+
+  @media (max-width: 425px){
+    h1{
+      margin-top: 0;
+    }
+  }
+`;
+
+export const Section6 = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40.31496062992126vh;
+
+  h1{
+    margin-bottom: 43px;
+    font-size: 30px;
+  }
+
+  @media (max-width: 768px){
+      h1{
+        font-size: 30px;
+      }
+    }
+
+    @media (max-width: 425px){
+    h1{
+      text-align: center;
+      font-size: 24px;
+    }
+  }
+`;
+
+export const Registration = styled.button`
+  background: #33B270;
+  border-radius: 40px;
+  font-size: 30px;
+  border: 1px solid #33B270;
+  font-family: var(--font-familyP);
+  color: white;
+  padding: 13px 46px;
+
+    @media (max-width: 768px){
+      font-size: 30px;
+    }
+
+    @media (max-width: 425px){
+      font-size: 24px;
+  }
+`;
+

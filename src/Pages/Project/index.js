@@ -1,19 +1,22 @@
 import React from "react";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
 
-import Kanban from "../../Components/Kanban";
-import Menu from "../../Components/MenuInside";
-import { Container } from "../Rooms/style";
+
+import Menu from "../../Components/MenuInsideProject";
+import TopInsideBar from "../../Components/TopInsideBar";
+import { Grid } from "./style";
+import TitleProject from "../../Components/TitleProject";
+import LogoInRoom from "../../Components/LogoInRoom";
+import MenuProject from "../../Components/MenuProject";
 
 const Project = () => {
   return (
-    <DndProvider backend={HTML5Backend}>
-      <Container color="ecf1f8">
-        <Menu page="salas" />
-        <Kanban />
-      </Container>
-    </DndProvider>
+       <Grid>
+      <Menu page="sala" />
+      <MenuProject /> 
+      <TitleProject />
+      <TopInsideBar />
+      <LogoInRoom />
+    </Grid>
   );
 };
 

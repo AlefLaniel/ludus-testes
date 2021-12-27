@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, IconBottom,  Logo } from "./style.js";
+import { Button, IconBottom } from "./style.js";
 
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,8 +9,6 @@ import {
   faLightbulb,
   faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
-
-import logoCa  from "../../Assets/Camaleão.png"
 
 const IconsMenu = ({
     help,

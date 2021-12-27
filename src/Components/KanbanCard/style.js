@@ -5,11 +5,11 @@ export const Container = styled.a`
   flex-direction: column;
   text-decoration: none;
   position: relative;
-  background: #fff;
-  border-radius: 5px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
   margin-bottom: 10px;
   padding: 15px;
-  box-shadow: 2px 2px 4px 0 rgb(0 2 2);
   border-top: 20px solid rgba(230, 236, 245, 0.4);
   cursor: grab;
 
@@ -74,11 +74,11 @@ export const Container = styled.a`
 `;
 
 export const Label = styled.span`
-  width: 10px;
+  width: 30px;
   height: 10px;
   margin-left: 4px;
   transform: translateX(-4px);
-  border-radius: 2px;
+  border-radius: 20px;
   display: inline-block;
   background: ${({ color }) => color};
 `;

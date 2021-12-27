@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
-import { PageContent, WrapCloseIcon } from "../style";
+import { WrapCloseIcon } from "../style";
 import {
   Header,
   Button,
   WrapChecklist,
   WrapItems,
+  PageContent,
   ItemContainer,
   Body,
   Title,
@@ -157,7 +158,7 @@ const Checklist = ({ toggleDrawer }) => {
                 <FontAwesomeIcon
                   onClick={() => HandleDeleteList(listindex)}
                   icon={faTrash}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", color: "#58595B" }}
                 />
               </WrapListHeader>
               <WrapItems>
@@ -172,7 +173,7 @@ const Checklist = ({ toggleDrawer }) => {
                       >
                         <Checkbox
                           onChange={() => HandleCheckbox(index, listindex)}
-                          color="#000"
+                          color="#58595B"
                           style={{ padding: "0px" }}
                           checked={item.status}
                         />
@@ -182,7 +183,7 @@ const Checklist = ({ toggleDrawer }) => {
                       </div>
                       <FontAwesomeIcon
                         onClick={() => HandleDeleteItem(index, listindex)}
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", color: "#58595B" }}
                         icon={faTimes}
                       />
                     </ItemContainer>

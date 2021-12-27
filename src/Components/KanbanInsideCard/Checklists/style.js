@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
+export const PageContent = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  background: #E5F3ED;
+`;
+
 export const Header = styled.header`
   display: flex;
   color: white;
   justify-content: space-between;
   padding: 20px 50px;
   font-size: 25px;
-  background: #12ccee;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #7F64AA;
   height: 240px;
 `;
 
@@ -20,8 +26,8 @@ export const Body = styled.div`
 
 export const Button = styled.button`
   padding: 5px;
-  border-radius: 2px;
-  background: #5e72e4;
+  border-radius: 5px;
+  background: linear-gradient(0deg, rgba(229, 243, 237, 0.2), rgba(229, 243, 237, 0.2)), #33B270;
   color: #fff;
   font-size: 0.85rem;
   font-weight: 500;
@@ -45,6 +51,7 @@ export const Title = styled.h1`
   font-size: 25px;
   font-weight: 500;
   margin-right: 10px;
+  color: #58595B;
 `;
 
 export const WrapItems = styled.div`
@@ -73,6 +80,7 @@ export const ItemContainer = styled.div`
 `;
 
 export const Paragraph = styled.p`
+  color: #58595B;
   margin-left: 10px;
   text-decoration: ${(props) =>
     props.decoration === "true" ? "line-through" : "none"};
@@ -115,10 +123,11 @@ export const WrapInputItem = styled.form`
 
 export const NewItemButton = styled.button`
   display: ${(props) => (props.display === "true" ? "flex" : "none")};
-  background: #5e72e4;
+  background: linear-gradient(0deg, rgba(229, 243, 237, 0.2), rgba(229, 243, 237, 0.2)), #33B270;
   border: none;
   padding: 10px;
   color: #fff;
+  border-radius: 5px;
   margin-top: 15px;
   font-weight: 700;
   cursor: pointer;

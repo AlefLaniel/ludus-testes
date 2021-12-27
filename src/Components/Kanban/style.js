@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  grid-area: CP;
   display: flex;
-  overflow-y: hidden;
   overflow-x: auto;
   padding: 20px 20px;
   height: calc(99.5vh - 70px);

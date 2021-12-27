@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import TopInsideBar from "../TopInsideBar";
-import UserContext, { Context } from "../../Context/contextApi";
+import { Context } from "../../Context/contextApi";
 import ConsultorsCard from "../ConsultorsCard";
 
 import { List } from "../ConsultorsList/style";

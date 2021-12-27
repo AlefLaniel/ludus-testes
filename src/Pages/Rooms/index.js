@@ -7,11 +7,13 @@ import RoomsList from "../../Components/RoomsList";
 
 
 import { Grid } from "./style.js";
+import { getTdRoom } from "../../Services/auth";
 
 const Rooms = () => {
+  console.log(getTdRoom())
   return (
      <Grid>
-       <Menu page="salas" />
+       <Menu page="salas"/>
        <TopInsideBar />
        <RoomsList />
     </Grid>

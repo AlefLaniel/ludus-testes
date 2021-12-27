@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import contextApi, { Context } from "../../Context/contextApi.js";
+import { Context } from "../../Context/contextApi.js";
 
 import {
   CardModel,

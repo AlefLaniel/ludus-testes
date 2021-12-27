@@ -3,15 +3,15 @@ import styled from "styled-components";
 export const WrapDateTime = styled.div`
   display: flex;
   flex-direction: column;
-  background: white;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: black;
   width: 300px;
   left: 25.1vw;
   position: absolute;
   top: 110px;
   justify-content: center;
-  border: 1px solid black;
-  border-radius: 7px;
+  border-radius: 10px;
 
   abbr {
     color: black;
@@ -55,6 +55,7 @@ export const Button = styled.button`
   color: #ffffff;
   font-size: 14px;
   font-weight: 500;
+  border-radius: 10px;
 
   :hover {
     background: ${(props) => props.hoverColor};

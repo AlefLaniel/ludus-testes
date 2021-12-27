@@ -10,16 +10,20 @@ export const Container = styled.div`
   -ms-flex: 0 0 290px;
   flex: 0 0 290px;
   width: 10px;
-  background-color: #00c4ff;
-  border-radius: 5px;
+  background: #E5F3ED;
+  box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
   white-space: normal;
   opacity: 1;
   margin-right: 10px;
 
   header {
-    color: white;
-    font-weight: 900;
-    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    font-family: var(--font-familyP);
+    line-height: 23px;
+    color: #58595B;
     padding: 0 8px;
     height: 35px;
     display: flex;
@@ -79,7 +83,8 @@ export const NewCardButton = styled.button`
   color: white;
   cursor: pointer;
   font-size: 16px;
-  background: #3b5bfd;
+  background: linear-gradient(0deg, rgba(229, 243, 237, 0.2), rgba(229, 243, 237, 0.2)), #33B270;
+  border-radius: 20px;
   margin: 8px;
   width: calc(100% - 16px);
   transform: translateY(-7px);
@@ -103,11 +108,12 @@ export const Card = styled.div`
   -webkit-text-decoration: none;
   text-decoration: none;
   position: relative;
-  background: #fff;
   border-radius: 5px;
   margin-bottom: 10px;
   padding: 15px;
-  box-shadow: 2px 2px 4px 0 rgb(0 2 2);
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
   border-top: 20px solid ${(props) => props.background};
 `;
 

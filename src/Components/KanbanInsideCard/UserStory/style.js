@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 250px;
   min-height: 75px;
-  background: #3c9cff;
+  background: linear-gradient(0deg, rgba(229, 243, 237, 0.2), rgba(229, 243, 237, 0.1)), #33B270;
   position: relative;
   top: 110px;
   border-radius: 3px;

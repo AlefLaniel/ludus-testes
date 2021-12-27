@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getToken, logout } from "../Services/auth";
+import { getToken, isAuthenticated, logout } from "../Services/auth";
 import http from '../Services/httpRequest';
 export default function useAuth() {
     let [auth, setAuth] = useState(false);
@@ -13,8 +13,8 @@ export default function useAuth() {
         setLoading(false); 
      }, []);
 
-     async function loga(){
-         setAuth(true); 
+      function loga(){
+            setAuth(true);
      }
     
      function desloga() {

@@ -76,11 +76,11 @@ const MiniCalendar = ({
         </MuiPickersUtilsProvider>
         <DayPicker selectedDays={day} onDayClick={(day) => setDay(day)} />
         <WrapButtons>
-          <Button color={"#33b510"} hoverColor={"#24840a"} onClick={HandleSave}>
+          <Button color={"linear-gradient(0deg, rgba(229, 243, 237, 0.4), rgba(229, 243, 237, 0.4)), #006A58"} hoverColor={"#24840a"} onClick={HandleSave}>
             Salvar
           </Button>
           <Button
-            color={"#f50303c7"}
+            color={"#E14444"}
             hoverColor={"#f50303"}
             onClick={HandleRemove}
           >

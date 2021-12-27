@@ -5,11 +5,11 @@ export const Container = styled.div`
   flex-direction: column;
   width: 250px;
   min-height: 20px;
-  background: #3c9cff;
+  background: linear-gradient(0deg, rgba(229, 243, 237, 0.2), rgba(229, 243, 237, 0.1)), #33B270;
   position: relative;
   left: 50px;
   top: 160px;
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 5px;
 `;
 

@@ -80,3 +80,87 @@ export const WrapLink = styled.div`
     text-decoration: none;
   }
 `;
+
+export const Input = styled.div`
+display: flex;
+flex-direction: column;
+margin-bottom: 1%;
+#name-user{
+  font-size: 25px;
+  
+  
+}
+
+input {
+  background: #C2D2CA;
+  border-radius: 5px;
+  border: 1px solid #C2D2CA;
+  height: 45px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1%;
+}
+
+@media (min-width: 2560px) and (max-width: 3000px){
+  input{
+    width: 100%;
+  }
+}
+
+@media (min-width: 1920px) and (max-width: 2500px){
+  input{
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px){
+  margin-bottom: 10px;
+  #name-user{
+    font-size: 20px;
+
+  }
+
+  input{
+    width: 100%
+  }
+
+}
+
+@media (max-width: 425px){
+  #name-user{
+    font-size: 18px;
+    
+  }
+
+  input{
+    width: 100%;
+  }
+}
+
+@media (max-width: 375px){
+  input{
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px){
+
+  #name-user{
+    font-size: 16px;
+  }
+  input{
+    width: 100%;
+  }
+}
+
+@media (max-width: 320px){
+
+#name-user{
+  font-size: 14px;
+}
+input{
+  width: 100%;
+}
+}
+
+`;

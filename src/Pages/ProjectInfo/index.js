@@ -1,16 +1,22 @@
 import React from "react";
 
-import { Container } from "../Rooms/style";
-
+import Menu from "../../Components/MenuInsideProject";
+import TopInsideBar from "../../Components/TopInsideBar";
+import { Grid } from "./style";
+import TitleProject from "../../Components/TitleProject";
 import ProjectDocs from "../../Components/ProjectDocs";
-import Menu from "../../Components/MenuInside";
+import MenuProject from "../../Components/MenuProject";
+
 
 const ProjectInfo = () => {
   return (
-    <Container>
-      <Menu page="salas" />
-      <ProjectDocs />
-    </Container>
+    <Grid>
+    <Menu page="sala" />
+    <MenuProject /> 
+    <TitleProject />
+    <TopInsideBar />
+    <ProjectDocs />
+  </Grid>
   );
 };
 
